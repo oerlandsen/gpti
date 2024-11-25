@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { LoginButton, LogoutButton } from './LoginButton';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useAppContext } from '../AppContext';
 
 const NavBar: React.FC = () => {
 
     const { isAuthenticated, user } = useAuth0();
+    const { setUser } = useAppContext();
+    
+    useEffect(() => {
+        if (user) {
+            setUser(user.sub);
+        }
+    }, [user, setUser]);
 
     return (
         <nav className="bg-yellow-300 p-4">

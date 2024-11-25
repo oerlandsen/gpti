@@ -1,15 +1,15 @@
 import { Seller } from './Interfaces';
 import { useNavigate } from 'react-router-dom';
 
-function ProductListCard({ key, seller }: { key: number, seller: Seller }) {
+function ProductListCard({ key, product }: { key: number, product: any }) {
 
     const navigate = useNavigate();
 
     return (
         <li key={key} className="flex flex-row justify-between p-4 bg-white shadow-lg rounded-lg">
-            <div className="flex flex-col items-left justify-center mr-4">
+            {/* <div className="flex flex-col items-left justify-center mr-4">
                 <p className="text-lg font-semibold text-gray-800">
-                    {seller.name}
+                    {product.title}
                 </p>
                 <p className="text-gray-600">
                     Precio: ${seller.price}
@@ -25,7 +25,7 @@ function ProductListCard({ key, seller }: { key: number, seller: Seller }) {
                 >
                     Ver Reseñas
                 </button>
-            </div>
+            </div> */}
         </li>
 
     )
