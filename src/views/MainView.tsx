@@ -2,6 +2,7 @@ import FileSelector from "../components/FileSelector";
 import NavBar from "../components/NavBar";
 
 function MainView() {
+
   return (
     <div>
       <NavBar />
