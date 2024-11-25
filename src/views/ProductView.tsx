@@ -1,10 +1,9 @@
-import { useLocation } from 'react-router-dom';
 import ProductListCard from '../components/ProductListCard';
+import { useAppContext } from '../AppContext';
 
 function ProductView() {
 
-    const location = useLocation();
-    const { productName, sellers, file } = location.state;
+    const { productName, sellers, file } = useAppContext();
 
     return (
         <div className="flex flex-row items-center justify-center p-6 gap-20">
@@ -13,7 +12,7 @@ function ProductView() {
                     Producto: {productName}
                 </h1>
                 <img
-                    src={URL.createObjectURL(file)}
+                    src={URL.createObjectURL(file!)}
                     alt="Producto"
                     className="w-full h-64 object-contain"
                 />

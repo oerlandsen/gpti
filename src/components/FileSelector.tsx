@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../AppContext"
 import Spinner from "./Spinner";
 import { Seller, Product } from "./Interfaces";
 import ProductListCard from "./ProductListCard";
@@ -15,32 +16,28 @@ const exampleProduct: Product = {
 };
 
 function FileSelector() {
-    const [file, setFile] = useState<File | null>(null);
+    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [loadingSellers, setLoadingSellers] = useState(false);
     const navigate = useNavigate();
+    const { setSellers, setProductName, setFile } = useAppContext();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
-            setFile(event.target.files[0]);
+            setUploadedFile(event.target.files[0]);
         }
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (file) {
-            // Aquí puedes manejar el archivo (subirlo al servidor o procesarlo)
-            // console.log("Archivo seleccionado:", file.name);
-
-            // Simulación de una llamada a la API para obtener vendedores
+        if (uploadedFile) {
             try {
                 setLoadingSellers(true);
-                // Wait to simulate the API call
                 await new Promise((resolve) => setTimeout(resolve, 1000));
-                // const response = await axios.get<Seller[]>("/api/sellers", {
-                //     params: { productName: file.name },
-                // });
                 setLoadingSellers(false);
-                navigate("/product", { state: { productName: exampleProduct.name, sellers: exampleSellers, file } });
+                setSellers(exampleSellers);
+                setProductName(exampleProduct.name);
+                setFile(uploadedFile);
+                navigate("/product");
 
             } catch (error) {
                 console.error("Error fetching sellers:", error);
@@ -84,13 +81,13 @@ function FileSelector() {
                     >
                         Subir Archivo
                     </button>
-                    {file && (
+                    {uploadedFile && (
                         <div className="mt-4">
                             <p className="text-sm text-gray-600">
-                                Archivo seleccionado: <strong>{file.name}</strong>
+                                Archivo seleccionado: <strong>{uploadedFile.name}</strong>
                             </p>
                             <img
-                                src={URL.createObjectURL(file)}
+                                src={URL.createObjectURL(uploadedFile)}
                                 alt="Producto"
                                 className="mt-4 w-full h-auto"
                             />

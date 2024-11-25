@@ -3,6 +3,7 @@ import MainView from "./views/MainView";
 import SellerReviews from "./views/SellerReviews";
 import ProductView from "./views/ProductView";
 import { Auth0Provider } from '@auth0/auth0-react';
+import { AppProvider } from "./AppContext";
 
 function App() {
   return (
@@ -16,11 +17,13 @@ function App() {
       }
     >
       <Router>
-        <Routes>
-          <Route path="/" element={<MainView />} />
-          <Route path="/reviews" element={<SellerReviews />} />
-          <Route path="/product" element={<ProductView />} />
-        </Routes>
+          <AppProvider>
+            <Routes>
+              <Route path="/" element={<MainView />} />
+              <Route path="/reviews" element={<SellerReviews />} />
+              <Route path="/product" element={<ProductView />} />
+            </Routes>
+          </AppProvider>
       </Router>
     </Auth0Provider>
   );
