@@ -14,7 +14,20 @@ function FileSelector() {
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
     const [loadingSellers, setLoadingSellers] = useState(false);
     const navigate = useNavigate();
-    const { setSellers, setProductName, setFile } = useAppContext();
+    const { setCategoria, setProductName, setFile } = useAppContext();
+
+    const categoriaParser = (name: string) => {
+        switch (name) {
+            case "amplificador"
+              : setCategoria("MLC1182")
+              break;
+            case "notebook"
+              : setCategoria("MLC1648")
+              break;
+            default
+              : setCategoria("")
+          }
+    }
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -29,8 +42,8 @@ function FileSelector() {
                 setLoadingSellers(true);
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 let name = uploadedFile.name.split(".")[0];
+                categoriaParser(name);
                 name = nameParser[name] || name;
-
                 setProductName(name);
                 setFile(uploadedFile);
                 setLoadingSellers(false);
@@ -98,3 +111,4 @@ function FileSelector() {
 }
 
 export default FileSelector;
+

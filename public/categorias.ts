@@ -1,4 +1,4 @@
-export const categorias = {
+export const categorias : { [key: string]: string }  = {
      "MLC1747" : "Accesorios para Vehículos",
      "MLC1512" : "Agro",
      "MLC1403" : "Alimentos y Bebidas",

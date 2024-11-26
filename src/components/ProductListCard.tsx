@@ -26,7 +26,7 @@ function ProductListCard({ key, product }: { key: number, product: any }) {
     }, [product.id]);
 
     return (
-        <li key={key} className="flex flex-row justify-between p-4 bg-white shadow-lg rounded-lg">
+        <li key={key} className="flex flex-col justify-between p-4 bg-white shadow-lg rounded-lg w">
             <div className="flex flex-col items-left justify-center mr-4">
                 <img
                     src={product.thumbnail!}

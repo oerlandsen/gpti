@@ -3,6 +3,7 @@ import ProductListCard from "../components/ProductListCard";
 import { useAppContext } from "../AppContext";
 import { searchItems } from "../api/mercadoLibre";
 import Spinner from "../components/Spinner";
+import { categorias } from "../../public/categorias";
 
 function ProductView() {
   const { productName, file, categoria } = useAppContext();
@@ -17,6 +18,7 @@ function ProductView() {
         const response = await searchItems(productName, categoria);
         // keep only the first 5 items
         response.results = response.results.slice(0, 10);
+        console.log("Products", response.results);
         setProducts(response.results);
         setLoading(false);
       } catch (error) {
@@ -38,6 +40,9 @@ function ProductView() {
             <h1 className="text-2xl font-bold text-gray-800 mb-4">
               Producto: {productName}
             </h1>
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">
+              Categoría: {categorias[categoria]}
+            </h1>
             <img
               src={URL.createObjectURL(file!)}
               alt="Producto"
@@ -46,13 +51,13 @@ function ProductView() {
           </div>
           <div className="mt-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4">
-              Vendedores que ofrecen este producto:
+              Productos Relacionados:
             </h2>
-            <ul className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product: any) => (
                 <ProductListCard key={product.id} product={product} />
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       )}

@@ -20,6 +20,7 @@ interface AppContextProps {
   user: any;
   setUser: (user: any) => void;
   categoria: string;
+  setCategoria: (categoria: string) => void;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -56,20 +57,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     setInitialHistory(user);
   }, [user]);
 
-  useEffect(() => {
-    switch (productName) {
-      case "amplificador"
-        : setCategoria("MLC1182")
-        break;
-      case "notebook"
-        : setCategoria("MLC1648")
-        break;
-      default
-        : setCategoria("")
-    }
-    console.log("Categoria: ", categoria);
-  }, [productName]);
-
   return (
     <AppContext.Provider
       value={{
@@ -83,7 +70,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         setHistory,
         user,
         setUser,
-        categoria
+        categoria,
+        setCategoria
       }}
     >
       {children}
