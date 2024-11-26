@@ -17,7 +17,7 @@ const NavBar: React.FC = () => {
     }, [user, setUser]);
 
     return (
-        <nav className="bg-yellow-300 p-4">
+        <nav className="bg-yellow-300 py-4 px-40">
             <div className="container mx-auto flex justify-between items-center">
                 <Link to="/" className="text-black opacity-90 font-sans text-xl font-bold">Mercado Visión</Link>
                 <div className="flex items-center">

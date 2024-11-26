@@ -11,10 +11,12 @@ interface Product {
 
 interface Review {
     id: number;
-    rating: number;
+    title: string;
     comment: string;
     date: string;
+    rating: number;
     relevance: number;
+    likes: number;
 }
 
 export type { Seller, Product, Review };

@@ -1,5 +1,6 @@
+import React, { useEffect } from "react";
 import { useAppContext } from "../AppContext";
-import NavBar from "../components/NavBar";
+
 
 function SearchHistory() {
 
@@ -7,7 +8,6 @@ function SearchHistory() {
 
     return (
         <div>
-            <NavBar />
             <div className="flex flex-col items-center justify-center p-6 gap-10">
                 <h1 className="text-3xl font-bold text-gray-900 mb-6">
                     Historial de Búsquedas

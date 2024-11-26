@@ -15,8 +15,9 @@ function ProductView() {
       setLoading(true);
       try {
         const response = await searchItems(productName);
+        // keep only the first 5 items
+        response.results = response.results.slice(0, 5);
         setProducts(response.results);
-        // console.log("Items fetched:", response.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching items:", error);
@@ -25,12 +26,12 @@ function ProductView() {
     };
 
     fetchItems();
-  }, []);
+  }, [productName]);
 
   return (
     <>
       {loading ? (
-        <Spinner />
+        <Spinner text="Cargando productos..." />
       ) : (
         <div className="flex flex-col items-center justify-center p-6 gap-20">
           <div className="p-6 bg-white rounded-xl shadow-lg w-full max-w-md">

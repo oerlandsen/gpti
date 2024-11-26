@@ -4,6 +4,7 @@ import { getItemReviews } from '../api/mercadoLibre';
 
 function ProductListCard({ key, product }: { key: number, product: any }) {
     const [reviews, setReviews] = useState<any>([]);
+    const [reviewsProps, setReviewsProps] = useState<any>([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -11,7 +12,11 @@ function ProductListCard({ key, product }: { key: number, product: any }) {
             try {
                 const response = await getItemReviews(product.id);
                 setReviews(response);
-                console.log("Reviews fetched:", response.reviews);
+                setReviewsProps({
+                    reviews: response.reviews,
+                    seller: product.seller.nickname,
+                    product: product.title
+                })
             } catch (error) {
                 console.error("Error fetching reviews:", error);
             }
@@ -24,10 +29,10 @@ function ProductListCard({ key, product }: { key: number, product: any }) {
         <li key={key} className="flex flex-row justify-between p-4 bg-white shadow-lg rounded-lg">
             <div className="flex flex-col items-left justify-center mr-4">
                 <img
-                src={product.thumbnail!}
-                alt="Producto"
-                className="w-full h-64 object-contain"
-                style={{ width: '30%', height: 'auto' }}
+                    src={product.thumbnail!}
+                    alt="Producto"
+                    className="w-full h-64 object-contain"
+                    style={{ width: '30%', height: 'auto' }}
                 />
                 <p className="text-lg font-semibold text-gray-800">
                     {product.title}
@@ -41,11 +46,11 @@ function ProductListCard({ key, product }: { key: number, product: any }) {
                 <p className="text-gray-600">
                     Vendedor: {product.seller?.nickname || ""}
                 </p>
-            </div> 
+            </div>
             <div className="flex flex-col items-center justify-center">
                 <button
                     className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-                    onClick={() => navigate(`/reviews?sellerId=${product.seller.id}`)}
+                    onClick={() => navigate(`/reviews?sellerId=${product.seller.id}`, { state: reviewsProps })}
                 >
                     Ver Reseñas
                 </button>

@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainView from "./views/MainView";
-import SellerReviews from "./views/SellerReviews";
+import ProductReviews from "./views/ProductReviews";
 import ProductView from "./views/ProductView";
-import SearchHistory from "./views/SearchHistory";
 import SearchHistory from "./views/SearchHistory";
 import { Auth0Provider } from '@auth0/auth0-react';
 import { AppProvider } from "./AppContext";
@@ -24,7 +23,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<MainView />} />
-            <Route path="/reviews" element={<SellerReviews />} />
+            <Route path="/reviews" element={<ProductReviews />} />
             <Route path="/product" element={<ProductView />} />
             <Route path="/history" element={<SearchHistory />} />
           </Routes>
