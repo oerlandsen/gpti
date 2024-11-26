@@ -5,7 +5,6 @@ function MainView() {
 
   return (
     <div>
-      <NavBar />
       <FileSelector />
     </div>
   );

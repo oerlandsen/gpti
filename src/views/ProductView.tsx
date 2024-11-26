@@ -5,7 +5,7 @@ import { searchItems } from "../api/mercadoLibre";
 import Spinner from "../components/Spinner";
 
 function ProductView() {
-  const { productName, sellers, file } = useAppContext();
+  const { productName, file } = useAppContext();
 
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -32,7 +32,7 @@ function ProductView() {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-row items-center justify-center p-6 gap-20">
+        <div className="flex flex-col items-center justify-center p-6 gap-20">
           <div className="p-6 bg-white rounded-xl shadow-lg w-full max-w-md">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">
               Producto: {productName}

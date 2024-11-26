@@ -4,6 +4,7 @@ import SellerReviews from "./views/SellerReviews";
 import ProductView from "./views/ProductView";
 import { Auth0Provider } from '@auth0/auth0-react';
 import { AppProvider } from "./AppContext";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     >
       <Router>
           <AppProvider>
+            <NavBar />
             <Routes>
               <Route path="/" element={<MainView />} />
               <Route path="/reviews" element={<SellerReviews />} />
