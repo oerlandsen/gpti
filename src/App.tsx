@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MainView from "./views/MainView";
 import SellerReviews from "./views/SellerReviews";
 import ProductView from "./views/ProductView";
+import SearchHistory from "./views/SearchHistory";
 import { Auth0Provider } from '@auth0/auth0-react';
 import { AppProvider } from "./AppContext";
 import NavBar from "./components/NavBar";
@@ -18,14 +19,15 @@ function App() {
       }
     >
       <Router>
-          <AppProvider>
-            <NavBar />
-            <Routes>
-              <Route path="/" element={<MainView />} />
-              <Route path="/reviews" element={<SellerReviews />} />
-              <Route path="/product" element={<ProductView />} />
-            </Routes>
-          </AppProvider>
+        <AppProvider>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<MainView />} />
+            <Route path="/reviews" element={<SellerReviews />} />
+            <Route path="/product" element={<ProductView />} />
+            <Route path="/history" element={<SearchHistory />} />
+          </Routes>
+        </AppProvider>
       </Router>
     </Auth0Provider>
   );

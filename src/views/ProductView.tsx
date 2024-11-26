@@ -16,7 +16,7 @@ function ProductView() {
       try {
         const response = await searchItems(productName);
         setProducts(response.results);
-        console.log("Items fetched:", response.results);
+        // console.log("Items fetched:", response.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching items:", error);
