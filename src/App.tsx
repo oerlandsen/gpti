@@ -3,6 +3,7 @@ import MainView from "./views/MainView";
 import ProductReviews from "./views/ProductReviews";
 import ProductView from "./views/ProductView";
 import SearchHistory from "./views/SearchHistory";
+import TrendsView from "./views/TrendsView";
 import { Auth0Provider } from '@auth0/auth0-react';
 import { AppProvider } from "./AppContext";
 import NavBar from "./components/NavBar";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/reviews" element={<ProductReviews />} />
             <Route path="/product" element={<ProductView />} />
             <Route path="/history" element={<SearchHistory />} />
+            <Route path="/trends" element={<TrendsView />} />
           </Routes>
         </AppProvider>
       </Router>

@@ -6,11 +6,16 @@ export async function searchItems(query: string) {
 }
 
 export async function getItemReviews(itemId: string) {
-  const response = await client.get(`/reviews/item/${itemId}?limit=10&offset=0`);
+  const response = await client.get(`/reviews/item/${itemId}`);
   return response.data;
 }
 
 export async function getSellerInfo(sellerId: string) {
   const response = await client.get(`/users/${sellerId}`);
+  return response.data;
+}
+
+export async function getTrends() {
+  const response = await client.get("/trends/MLC");
   return response.data;
 }
