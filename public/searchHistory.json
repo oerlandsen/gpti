@@ -1,0 +1,24 @@
+{
+    "auth0|6743ec8d0b7fa3b0dd19f5b0": [
+        {
+            "searchTerm": "Cubo Rubik",
+            "date": "2024-11-25T00:00:00.000Z",
+            "imagePath": "/images/rubik.jpg"
+        },
+        {
+            "searchTerm": "Bajo acustico",
+            "date": "2024-11-24T00:00:00.000Z",
+            "imagePath": "/images/bajo.jpeg"
+        },
+        {
+            "searchTerm": "Libro Cien Años de Soledad",
+            "date": "2024-11-20T00:00:00.000Z",
+            "imagePath": "/images/cien.png"
+        },
+        {
+            "searchTerm": "Peluche Totodile",
+            "date": "2024-11-12T00:00:00.000Z",
+            "imagePath": "/images/totodile.png"
+        }
+    ]
+}
