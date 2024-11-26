@@ -16,7 +16,7 @@ function ProductView() {
       try {
         const response = await searchItems(productName, categoria);
         // keep only the first 5 items
-        response.results = response.results.slice(0, 5);
+        response.results = response.results.slice(0, 10);
         setProducts(response.results);
         setLoading(false);
       } catch (error) {
@@ -31,7 +31,7 @@ function ProductView() {
   return (
     <>
       {loading ? (
-        <Spinner text="Cargando productos..." />
+        <Spinner text="Identificando producto..." />
       ) : (
         <div className="flex flex-col items-center justify-center p-6 gap-20">
           <div className="p-6 bg-white rounded-xl shadow-lg w-full max-w-md">
