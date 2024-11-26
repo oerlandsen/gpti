@@ -127,7 +127,7 @@ function ProductReviews() {
                     </div>
                 </div>
 
-                <div className='flex flex-col mt-4'>
+                <div className='flex flex-col mt-4 w-full max-w-2xl'>
                     {loadingReviews ? (
                         <Spinner />
                     ) : reviews.length > 0 ? (
