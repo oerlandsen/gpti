@@ -20,5 +20,27 @@
             "date": "2024-11-12T00:00:00.000Z",
             "imagePath": "/images/totodile.png"
         }
-    ]
+    ],
+    "auth0|67462eb3f6b7584636090761" : [
+        {
+            "searchTerm": "Cubo Rubik",
+            "date": "2024-11-25T00:00:00.000Z",
+            "imagePath": "/images/rubik.jpg"
+        },
+        {
+            "searchTerm": "Bajo acustico",
+            "date": "2024-11-24T00:00:00.000Z",
+            "imagePath": "/images/bajo.jpeg"
+        },
+        {
+            "searchTerm": "Libro Cien Años de Soledad",
+            "date": "2024-11-20T00:00:00.000Z",
+            "imagePath": "/images/cien.png"
+        },
+        {
+            "searchTerm": "Peluche Totodile",
+            "date": "2024-11-12T00:00:00.000Z",
+            "imagePath": "/images/totodile.png"
+        }
+    ]    
 }

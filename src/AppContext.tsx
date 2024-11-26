@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { Seller } from "./components/Interfaces";
+import { categorias } from "../public/categorias"
 
 interface HistoryElement {
   searchTerm: string;
@@ -18,6 +19,7 @@ interface AppContextProps {
   setHistory: (history: HistoryElement[]) => void;
   user: any;
   setUser: (user: any) => void;
+  categoria: string;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -31,6 +33,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [sellers, setSellers] = useState<Seller[]>([]);
   const [user, setUser] = useState<any>('auth0|6743ec8d0b7fa3b0dd19f5b0');
   const [history, setHistory] = useState<HistoryElement[]>([]);
+  const [categoria, setCategoria] = useState("");
 
   useEffect(() => {
     async function setInitialHistory(user: any) {
@@ -52,6 +55,21 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
     }
     setInitialHistory(user);
   }, [user]);
+
+  useEffect(() => {
+    switch (productName) {
+      case "amplificador"
+        : setCategoria("MLC1182")
+        break;
+      case "notebook"
+        : setCategoria("MLC1648")
+        break;
+      default
+        : setCategoria("")
+    }
+    console.log("Categoria: ", categoria);
+  }, [productName]);
+
   return (
     <AppContext.Provider
       value={{
@@ -64,7 +82,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         history,
         setHistory,
         user,
-        setUser
+        setUser,
+        categoria
       }}
     >
       {children}

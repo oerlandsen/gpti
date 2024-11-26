@@ -1,7 +1,7 @@
 import client from "./client";
 
-export async function searchItems(query: string) {
-  const response = await client.get(`/sites/MLC/search?q=${query}`);
+export async function searchItems(query: string, categoria: string) {
+  const response = await client.get(`/sites/MLC/search?q=${query}&category=${categoria}`);
   return response.data;
 }
 

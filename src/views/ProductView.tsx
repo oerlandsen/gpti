@@ -5,7 +5,7 @@ import { searchItems } from "../api/mercadoLibre";
 import Spinner from "../components/Spinner";
 
 function ProductView() {
-  const { productName, file } = useAppContext();
+  const { productName, file, categoria } = useAppContext();
 
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ function ProductView() {
     const fetchItems = async () => {
       setLoading(true);
       try {
-        const response = await searchItems(productName);
+        const response = await searchItems(productName, categoria);
         // keep only the first 5 items
         response.results = response.results.slice(0, 5);
         setProducts(response.results);

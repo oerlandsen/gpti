@@ -5,15 +5,10 @@ import Spinner from "./Spinner";
 import { Seller, Product } from "./Interfaces";
 import ProductListCard from "./ProductListCard";
 
-const exampleSellers: Seller[] = [
-    { id: 1, name: "Vendedor 1", price: 100, rating: 4.5 },
-    { id: 2, name: "Vendedor 2", price: 90, rating: 4.0 },
-    { id: 3, name: "Vendedor 3", price: 110, rating: 4.8 },
-];
-
-const exampleProduct: Product = {
-    name: "Playstation 5",
-};
+const nameParser: { [key: string]: string } = {
+    "amplificador" : "Amplificador Guitarra",
+    "notebook": "Notebook"
+}
 
 function FileSelector() {
     const [uploadedFile, setUploadedFile] = useState<File | null>(null);
@@ -33,10 +28,12 @@ function FileSelector() {
             try {
                 setLoadingSellers(true);
                 await new Promise((resolve) => setTimeout(resolve, 1000));
-                setLoadingSellers(false);
-                setSellers(exampleSellers);
-                setProductName(exampleProduct.name);
+                let name = uploadedFile.name.split(".")[0];
+                name = nameParser[name] || name;
+
+                setProductName(name);
                 setFile(uploadedFile);
+                setLoadingSellers(false);
                 navigate("/product");
 
             } catch (error) {

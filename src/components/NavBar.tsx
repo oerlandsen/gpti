@@ -12,6 +12,7 @@ const NavBar: React.FC = () => {
 
     useEffect(() => {
         if (user) {
+            console.log("User:", user);
             setUser(user.sub);
         }
     }, [user, setUser]);
