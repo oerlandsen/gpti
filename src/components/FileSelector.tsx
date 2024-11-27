@@ -6,8 +6,12 @@ import { Seller, Product } from "./Interfaces";
 import ProductListCard from "./ProductListCard";
 
 const nameParser: { [key: string]: string } = {
-    "amplificador" : "Amplificador Guitarra",
-    "notebook": "Notebook"
+    "amplificador": "Amplificador Guitarra",
+    "notebook": "Notebook",
+    "bajo": "Bajo Acústico",
+    "cien": "Libro Cien Años de Soledad",
+    "rubik": "Cubo Rubik 3x3",
+    "totodile": "Peluche Totodile"
 }
 
 function FileSelector() {
@@ -19,14 +23,27 @@ function FileSelector() {
     const categoriaParser = (name: string) => {
         switch (name) {
             case "amplificador"
-              : setCategoria("MLC1182")
-              break;
+                : setCategoria("MLC1182")
+                break;
             case "notebook"
-              : setCategoria("MLC1648")
-              break;
+                : setCategoria("MLC1648")
+                break;
+            case "bajo"
+                : setCategoria("MLC1182")
+                break;
+            case "cien"
+                : setCategoria("MLC3025")
+                break;
+            case "rubik"
+                : setCategoria("MLC1132")
+                break;
+            case "totodile"
+                : setCategoria("MLC1132")
+                break;
             default
-              : setCategoria("")
-          }
+                : setCategoria("MLC1953")
+                break;
+        }
     }
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
