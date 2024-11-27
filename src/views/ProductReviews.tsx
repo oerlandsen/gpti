@@ -57,7 +57,7 @@ function ProductReviews() {
                 const sortedReviews = [...reviews];
                 sortedReviews.sort((a, b) => b.relevance - a.relevance);
                 setReviews(sortedReviews);
-            }, 1000);
+            }, 2500);
         }
     }, [sellerId]);
 
