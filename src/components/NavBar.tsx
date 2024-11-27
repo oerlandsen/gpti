@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { LoginButton, LogoutButton } from './LoginButton';
+import { LoginButton } from './LoginButton';
 import UserNavDropdown from './UserNavDropdown';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useAppContext } from '../AppContext';

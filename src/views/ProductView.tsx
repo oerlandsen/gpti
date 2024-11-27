@@ -6,20 +6,37 @@ import Spinner from "../components/Spinner";
 import { categorias } from "../../public/categorias";
 
 function ProductView() {
-  const { productName, file, categoria } = useAppContext();
+  const { productName, file, categoria, history, setHistory } = useAppContext();
 
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
+
+  function updateHistory(productName: string, categoria: string, file: Blob | null) {
+    const historyElement = {
+      searchTerm: productName,
+      searchDate: new Date(),
+      imagePath: URL.createObjectURL(file!), // /images/${productName}.jpg
+      category: categorias[categoria],
+    };
+
+    // If the history already contains the element, move it to the top
+    const index = history.findIndex((element) => element.searchTerm === productName);
+    if (index !== -1) {
+      history.splice(index, 1);
+    }
+
+    setHistory([historyElement, ...history]);
+  }
 
   useEffect(() => {
     const fetchItems = async () => {
       setLoading(true);
       try {
         const response = await searchItems(productName, categoria);
-        // keep only the first 5 items
         response.results = response.results.slice(0, 10);
         console.log("Products", response.results);
         setProducts(response.results);
+        updateHistory(productName, categoria, file);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching items:", error);
@@ -28,7 +45,7 @@ function ProductView() {
     };
 
     fetchItems();
-  }, [productName]);
+  }, [productName, categoria]);
 
   return (
     <>

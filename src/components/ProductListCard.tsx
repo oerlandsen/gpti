@@ -5,6 +5,7 @@ import { getItemReviews } from '../api/mercadoLibre';
 function ProductListCard({ key, product }: { key: number, product: any }) {
     const [reviews, setReviews] = useState<any>([]);
     const [reviewsProps, setReviewsProps] = useState<any>([]);
+    const [productUrl] = useState<string>(product.permalink);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -47,7 +48,13 @@ function ProductListCard({ key, product }: { key: number, product: any }) {
                     Vendedor: {product.seller?.nickname || ""}
                 </p>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-row items-center justify-center gap-4 mt-4">
+                <button
+                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                    onClick={() => window.open(productUrl, "_blank")}
+                >
+                    Ir a Comprar
+                </button>
                 <button
                     className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
                     onClick={() => navigate(`/reviews?sellerId=${product.seller.id}`, { state: reviewsProps })}

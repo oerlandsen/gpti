@@ -5,8 +5,9 @@ import Spinner from '../components/Spinner';
 import ReviewRating from '../components/ReviewRating';
 
 
-function getParsedReviews(reviews) {
+function getParsedReviews(reviews: { id: number; title: string; content: string; date_created: string; rate: number; relevance: number; likes: number; }[]) {
     return reviews.map((review) => ({
+        id: review.id,
         title: review.title,
         comment: review.content,
         date: review.date_created,

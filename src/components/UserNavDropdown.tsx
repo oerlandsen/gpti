@@ -11,14 +11,14 @@ function UserNavDropdown(props: any) {
     // Create dropdown showing user nickname, and revealing logout button and history button when hovered
     return (
         userNickName &&
-        <div className="relative group">
-            <div className='flex flex-row gap-10'>
-                <button onClick={() => navigator("/history")}  className="text-gray-900 opacity-90 font-sans font-semibold text-s hover:opacity-100" id="dropdown-button">Historial</button>
+        <div className='flex flex-row gap-10'>
+            <button onClick={() => navigator("/history")} className="text-gray-900 opacity-90 font-sans font-semibold text-s hover:opacity-100" id="dropdown-button">Historial</button>
+            <div className="relative group">
                 <button className="text-gray-900 opacity-90 font-sans font-semibold text-s hover:opacity-100" id="dropdown-button">Mi Cuenta</button>
-            </div>  
-            <div className="absolute hidden bg-gray-100 min-w-32 shadow-lg z-10 group-hover:block right-0" id="dropdown-content">
-                <h1 className="text-s text-left py-2 px-4">{userNickName}</h1>
-                <button onClick={() => logout()} className="block w-full text-s text-left py-2 px-4 hover:bg-gray-300">Salir</button>
+                <div className="absolute hidden bg-gray-100 min-w-32 shadow-lg z-10 group-hover:block right-0" id="dropdown-content">
+                    <h1 className="text-s text-left py-2 px-4">{userNickName}</h1>
+                    <button onClick={() => logout()} className="block w-full text-s text-left py-2 px-4 hover:bg-gray-300">Salir</button>
+                </div>
             </div>
         </div>
     );

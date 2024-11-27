@@ -4,12 +4,14 @@ import { useAppContext } from "../AppContext";
 import Spinner from "./Spinner";
 
 const nameParser: { [key: string]: string } = {
-    "amplificador": "Amplificador Guitarra",
-    "notebook": "Notebook",
-    "bajo": "Bajo Acústico",
-    "cien": "Libro Cien Años de Soledad",
-    "rubik": "Cubo Rubik 3x3",
-    "totodile": "Peluche Totodile"
+  "amplificador": "Amplificador Guitarra",
+  "notebook": "Notebook MSI",
+  "bajo": "Bajo Acústico",
+  "cien": "Libro Cien Años de Soledad",
+  "rubik": "Cubo Rubik 3x3",
+  "totodile": "Peluche Totodile",
+  "play5": "Playstation 5",
+  "iphone13": "Iphone 13"
 }
 
 function FileSelector() {
@@ -18,31 +20,37 @@ function FileSelector() {
   const navigate = useNavigate();
   const { setCategoria, setProductName, setFile } = useAppContext();
 
-    const categoriaParser = (name: string) => {
-        switch (name) {
-            case "amplificador"
-                : setCategoria("MLC1182")
-                break;
-            case "notebook"
-                : setCategoria("MLC1648")
-                break;
-            case "bajo"
-                : setCategoria("MLC1182")
-                break;
-            case "cien"
-                : setCategoria("MLC3025")
-                break;
-            case "rubik"
-                : setCategoria("MLC1132")
-                break;
-            case "totodile"
-                : setCategoria("MLC1132")
-                break;
-            default
-                : setCategoria("MLC1953")
-                break;
-        }
+  const categoriaParser = (name: string) => {
+    switch (name) {
+      case "amplificador"
+        : setCategoria("MLC1182")
+        break;
+      case "notebook"
+        : setCategoria("MLC1648")
+        break;
+      case "bajo"
+        : setCategoria("MLC1182")
+        break;
+      case "cien"
+        : setCategoria("MLC3025")
+        break;
+      case "rubik"
+        : setCategoria("MLC1132")
+        break;
+      case "totodile"
+        : setCategoria("MLC1132")
+        break;
+      case "play5"
+        : setCategoria("MLC1144")
+        break;
+      case "iphone13"
+        : setCategoria("MLC1051")
+        break;
+      default
+        : setCategoria("MLC1953")
+        break;
     }
+  }
 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
