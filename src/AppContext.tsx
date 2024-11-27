@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import { Seller } from "./components/Interfaces";
-import { categorias } from "../public/categorias"
 
 interface HistoryElement {
   searchTerm: string;
   searchDate: Date;
   imagePath: string;
+  category: string;
 }
 
 interface AppContextProps {

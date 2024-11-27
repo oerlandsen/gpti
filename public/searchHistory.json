@@ -3,142 +3,166 @@
         {
             "searchTerm": "Cubo Rubik",
             "date": "2024-11-25T00:00:00.000Z",
-            "imagePath": "/images/rubik.jpg"
+            "imagePath": "/images/rubik.jpg",
+            "category": "Juegos y Juguetes"
         },
         {
             "searchTerm": "Bajo acustico",
             "date": "2024-11-24T00:00:00.000Z",
-            "imagePath": "/images/bajo.jpeg"
+            "imagePath": "/images/bajo.jpeg",
+            "category": "Instrumentos Musicales"
         },
         {
             "searchTerm": "Libro Cien Años de Soledad",
             "date": "2024-11-20T00:00:00.000Z",
-            "imagePath": "/images/cien.png"
+            "imagePath": "/images/cien.png",
+            "category": "Libros, Revistas y Comics"
         },
         {
             "searchTerm": "Peluche Totodile",
             "date": "2024-11-12T00:00:00.000Z",
-            "imagePath": "/images/totodile.png"
+            "imagePath": "/images/totodile.png",
+            "category": "Juegos y Juguetes"
         }
     ],
     "auth0|1234567890abcdef12345678": [
         {
             "searchTerm": "Playstation 5",
             "date": "2024-10-29T00:00:00.000Z",
-            "imagePath": "/images/ps5.jpg"
+            "imagePath": "/images/ps5.jpg",
+            "category": "Consolas y Videojuegos"
         },
         {
             "searchTerm": "Cubo Rubik",
             "date": "2024-10-30T00:00:00.000Z",
-            "imagePath": "/images/rubik.jpg"
+            "imagePath": "/images/rubik.jpg",
+            "category": "Juegos y Juguetes"
         }
     ],
     "auth0|abcdef1234567890abcdef12": [
         {
             "searchTerm": "Bajo acustico",
             "date": "2024-11-25T00:00:00.000Z",
-            "imagePath": "/images/bajo.jpeg"
+            "imagePath": "/images/bajo.jpeg",
+            "category": "Instrumentos Musicales"
         },
         {
             "searchTerm": "Libro Cien Años de Soledad",
             "date": "2024-11-18T00:00:00.000Z",
-            "imagePath": "/images/cien.png"
+            "imagePath": "/images/cien.png",
+            "category": "Libros, Revistas y Comics"
         }
     ],
     "auth0|fedcba0987654321fedcba09": [
         {
             "searchTerm": "Peluche Totodile",
             "date": "2024-11-24T00:00:00.000Z",
-            "imagePath": "/images/totodile.png"
+            "imagePath": "/images/totodile.png",
+            "category": "Juegos y Juguetes"
         },
         {
             "searchTerm": "Playstation 5",
             "date": "2024-11-11T00:00:00.000Z",
-            "imagePath": "/images/ps5.jpg"
+            "imagePath": "/images/ps5.jpg",
+            "category": "Consolas y Videojuegos"
         }
     ],
     "auth0|0987654321abcdef09876543": [
         {
             "searchTerm": "Cubo Rubik",
             "date": "2024-11-02T00:00:00.000Z",
-            "imagePath": "/images/rubik.jpg"
+            "imagePath": "/images/rubik.jpg",
+            "category": "Juegos y Juguetes"
         },
         {
             "searchTerm": "Playstation 5",
             "date": "2024-11-01T00:00:00.000Z",
-            "imagePath": "/images/ps5.jpg"
+            "imagePath": "/images/ps5.jpg",
+            "category": "Consolas y Videojuegos"
         }
     ],
     "auth0|11223344556677889900aabb": [
         {
             "searchTerm": "Libro Cien Años de Soledad",
             "date": "2024-11-21T00:00:00.000Z",
-            "imagePath": "/images/cien.png"
+            "imagePath": "/images/cien.png",
+            "category": "Libros, Revistas y Comics"
         },
         {
             "searchTerm": "Bajo acustico",
             "date": "2024-11-12T00:00:00.000Z",
-            "imagePath": "/images/bajo.jpeg"
+            "imagePath": "/images/bajo.jpeg",
+            "category": "Instrumentos Musicales"
         }
     ],
     "auth0|aabbccddeeff001122334455": [
         {
             "searchTerm": "Nintendo Switch",
             "date": "2024-11-26T00:00:00.000Z",
-            "imagePath": "/images/switch.jpg"
+            "imagePath": "/images/switch.jpg",
+            "category": "Consolas y Videojuegos"
         },
         {
             "searchTerm": "Auriculares Bose",
             "date": "2024-11-20T00:00:00.000Z",
-            "imagePath": "/images/bose.jpg"
+            "imagePath": "/images/bose.jpg",
+            "category": "Electrónica, Audio y Video"
         }
     ],
     "auth0|556677889900aabbccddeeff": [
         {
             "searchTerm": "iPhone 13",
             "date": "2024-11-25T00:00:00.000Z",
-            "imagePath": "/images/iphone13.jpg"
+            "imagePath": "/images/iphone13.jpg",
+            "category": "Celulares y Telefonía"
         },
         {
             "searchTerm": "MacBook Pro",
             "date": "2024-11-18T00:00:00.000Z",
-            "imagePath": "/images/macbook.jpg"
+            "imagePath": "/images/macbook.jpg",
+            "category": "Computación"
         }
     ],
     "auth0|ffeeddccbbaa998877665544": [
         {
             "searchTerm": "Samsung Galaxy S21",
             "date": "2024-11-24T00:00:00.000Z",
-            "imagePath": "/images/galaxy.jpg"
+            "imagePath": "/images/galaxy.jpg",
+            "category": "Celulares y Telefonía"
         },
         {
             "searchTerm": "Tablet Fire HD",
             "date": "2024-11-15T00:00:00.000Z",
-            "imagePath": "/images/firehd.jpg"
+            "imagePath": "/images/firehd.jpg",
+            "category": "Computación"
         }
     ],
     "auth0|123443211234432112344321": [
         {
             "searchTerm": "GoPro Hero 9",
             "date": "2024-11-23T00:00:00.000Z",
-            "imagePath": "/images/gopro.jpg"
+            "imagePath": "/images/gopro.jpg",
+            "category": "Cámaras y Accesorios"
         },
         {
             "searchTerm": "Drone DJI Mavic",
             "date": "2024-11-10T00:00:00.000Z",
-            "imagePath": "/images/dji.jpg"
+            "imagePath": "/images/dji.jpg",
+            "category": "Cámaras y Accesorios"
         }
     ],
     "auth0|99887766554433221100aabb": [
         {
             "searchTerm": "Smart TV LG",
             "date": "2024-11-21T00:00:00.000Z",
-            "imagePath": "/images/smarttv.jpg"
+            "imagePath": "/images/smarttv.jpg",
+            "category": "Electrónica, Audio y Video"
         },
         {
             "searchTerm": "Xbox Series X",
             "date": "2024-11-12T00:00:00.000Z",
-            "imagePath": "/images/xbox.jpg"
+            "imagePath": "/images/xbox.jpg",
+            "category": "Consolas y Videojuegos"
         }
     ]
 }

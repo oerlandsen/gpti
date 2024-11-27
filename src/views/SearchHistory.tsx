@@ -1,6 +1,11 @@
-import React, { useEffect } from "react";
 import { useAppContext } from "../AppContext";
 
+interface HistoryElement {
+    searchTerm: string;
+    category: string;
+    imagePath: string;
+    category: string;
+}
 
 function SearchHistory() {
 
@@ -14,11 +19,14 @@ function SearchHistory() {
                 </h1>
                 <div className="p-6 bg-white rounded-xl shadow-lg w-full max-w-lg">
                     <ul className="space-y-6">
-                        {history.map((historyElement: { searchTerm: string; imagePath: string }, index: number) => (
+                        {history.map((historyElement: HistoryElement, index: number) => (
                             <li key={index} className="border-b border-gray-200 pb-4">
                                 <h2 className="text-xl font-semibold text-gray-700 mb-2">
                                     Producto: {historyElement.searchTerm}
                                 </h2>
+                                <p className="text-gray-500 mb-2">
+                                    Categoría: {historyElement.category}
+                                </p>
                                 <img
                                     src={historyElement.imagePath}
                                     alt="Producto"

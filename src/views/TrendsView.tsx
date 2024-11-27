@@ -4,6 +4,7 @@ interface HistoryElement {
     searchTerm: string;
     date: Date;
     imagePath: string;
+    category: string;
 }
 
 function parseTrends(data: any) {
