@@ -29,6 +29,11 @@ function App() {
             <Route path="/history" element={<SearchHistory />} />
             <Route path="/trends" element={<TrendsView />} />
           </Routes>
+          <footer className="bg-gray-800 py-4">
+        <div className="container mx-auto text-center text-gray-400 text-sm">
+          © 2024 Mercado Visión. Todos los derechos reservados.
+        </div>
+      </footer>
         </AppProvider>
       </Router>
     </Auth0Provider>

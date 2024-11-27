@@ -88,7 +88,7 @@ function TrendsView() {
     }, []);
 
     return (
-        <div className="flex flex-col p-5 font-sans justify-center items-center">
+        <div className="flex flex-col p-5 font-sans min-h-screen mt-10 items-center">
             <h1 className="text-center text-gray-800 mb-5 text-2xl font-semibold">Tendencias</h1>
             <div className="flex justify-center mb-5">
                 <button
