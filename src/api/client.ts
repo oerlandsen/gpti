@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL: 'https://api.mercadolibre.com',
+  baseURL: '/api-mercadolibre',
   headers: {
-    'Authorization': `Bearer APP_USR-92783577301737-112621-7ac8a254c71f38e96334b833859c6076-48687107`,
+    'Authorization': `Bearer APP_USR-92783577301737-112719-35dbbd096c9b6fdf97eba895f3d29885-48687107`,
   },
 });
 
