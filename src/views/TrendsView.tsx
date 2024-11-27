@@ -54,7 +54,7 @@ function getTrendsByTimeRange(trends: { [key: string]: HistoryElement[] }, timeR
 
     return Object.keys(filteredTrends)
         .sort((a, b) => filteredTrends[b].length - filteredTrends[a].length)
-        .slice(0, 5)
+        .slice(0, 10)
         .reduce((acc, key) => {
             acc[key] = filteredTrends[key];
             return acc;
