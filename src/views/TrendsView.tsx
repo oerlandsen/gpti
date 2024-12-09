@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { categoriasInverso } from "../../public/categorias";
+import { useAppContext } from "../AppContext";
+import { useNavigate } from "react-router-dom";
 
 interface HistoryElement {
     searchTerm: string;
@@ -65,6 +68,22 @@ function TrendsView() {
     const [trends, setTrends] = useState<any>([]);
     const [loading, setLoading] = useState(false);
     const [timeRange, setTimeRange] = useState("week");
+    const { setProductName, setCategoria, setFile } = useAppContext();
+    const navigate = useNavigate();
+
+    const handleClick = async (historyElement: HistoryElement) => {
+        setProductName(historyElement.searchTerm);
+        setCategoria(categoriasInverso[historyElement.category]);
+        console.log("categorias inverso", categoriasInverso[historyElement.category]);
+        try {
+            const response = await fetch(historyElement.imagePath);
+            const blob = await response.blob();
+            setFile(blob);
+            navigate("/product");
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+        }
+    }
 
     useEffect(() => {
         const fetchTrends = async () => {
@@ -90,31 +109,39 @@ function TrendsView() {
     return (
         <div className="flex flex-col p-5 font-sans min-h-screen mt-10 items-center">
             <h1 className="text-center text-gray-800 mb-5 text-2xl font-semibold">Tendencias</h1>
-            <div className="flex justify-center mb-5">
-                <button
-                    onClick={() => setTimeRange("week")}
-                    className={`px-4 py-2 mx-2 ${timeRange === "week" ? "bg-blue-500" : "bg-gray-600"} text-white border-none rounded-lg cursor-pointer transition-colors duration-300`}
-                >
-                    Última semana
-                </button>
-                <button
-                    onClick={() => setTimeRange("month")}
-                    className={`px-4 py-2 mx-2 ${timeRange === "month" ? "bg-blue-500" : "bg-gray-600"} text-white border-none rounded-lg cursor-pointer transition-colors duration-300`}
-                >
-                    Último mes
-                </button>
+            <div className="flex flex-col justify-center mb-5 gap-6">
+                <div className="flex flex-row justify-center items-center">
+                    <button
+                        onClick={() => setTimeRange("week")}
+                        className={`px-4 py-2 mx-2 ${timeRange === "week" ? "bg-blue-500" : "bg-gray-600"} text-white border-none rounded-lg cursor-pointer transition-colors duration-300`}
+                    >
+                        Última semana
+                    </button>
+                    <button
+                        onClick={() => setTimeRange("month")}
+                        className={`px-4 py-2 mx-2 ${timeRange === "month" ? "bg-blue-500" : "bg-gray-600"} text-white border-none rounded-lg cursor-pointer transition-colors duration-300`}
+                    >
+                        Último mes
+                    </button>
+                </div>
+                {loading ? (
+                    <p className="text-center text-gray-600">Cargando...</p>
+                ) : (
+                    <ul className="flex flex-col list-none justify-center items-start px-4">
+                        {trends && Object.keys(getTrendsByTimeRange(trends, timeRange)).map((key: string, index: number) => (
+                            <li key={index} className="mb-2">
+                                <h2
+                                    className="text-gray-800 cursor-pointer"
+                                    onClick={() => handleClick(trends[key][0])}
+                                >
+                                    {key} ({getTrendsByTimeRange(trends, timeRange)[key].length})
+                                </h2>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
-            {loading ? (
-                <p className="text-center text-gray-600">Loading...</p>
-            ) : (
-                <ul className="flex flex-col list-none justify-center items-center">
-                    {trends && Object.keys(getTrendsByTimeRange(trends, timeRange)).map((key: string, index: number) => (
-                        <li key={index} className="mb-2">
-                            <h2 className="text-gray-800">{key} ({getTrendsByTimeRange(trends, timeRange)[key].length})</h2>
-                        </li>
-                    ))}
-                </ul>
-            )}
+
         </div>
     );
 }
