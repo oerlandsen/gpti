@@ -11,7 +11,7 @@ const nameParser: { [key: string]: string } = {
   "rubik": "Cubo Rubik 3x3",
   "totodile": "Peluche Totodile",
   "play5": "Playstation 5",
-  "iphone13": "Iphone 13"
+  "WhatsApp Image 2024-11-22 at 13": "Iphone 13"
 }
 
 function FileSelector() {
@@ -43,7 +43,7 @@ function FileSelector() {
       case "play5"
         : setCategoria("MLC1144")
         break;
-      case "iphone13"
+      case "WhatsApp Image 2024-11-22 at 13"
         : setCategoria("MLC1051")
         break;
       default

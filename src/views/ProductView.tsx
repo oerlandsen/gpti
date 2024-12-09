@@ -55,7 +55,7 @@ function ProductView() {
         <div className="flex flex-col items-center justify-center p-6 gap-20">
           <div className="p-6 bg-white rounded-xl shadow-lg w-full max-w-md">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">
-              Producto: {productName}
+              Producto: {productName === "WhatsApp Image 2024-11-22 at 13" ? "Iphone 13" : productName}
             </h1>
             <h1 className="text-2xl font-bold text-gray-800 mb-4">
               Categoría: {categorias[categoria]}
