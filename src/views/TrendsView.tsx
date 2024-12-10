@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { categoriasInverso } from "../../public/categorias";
 import { useAppContext } from "../AppContext";
 import { useNavigate } from "react-router-dom";
 import { getTrends } from "../api/mercadoLibre";
