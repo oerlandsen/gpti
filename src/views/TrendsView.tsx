@@ -16,17 +16,18 @@ function TrendsView() {
     const [loading, setLoading] = useState(false);
     const [timeRange, setTimeRange] = useState("weekly");
     const [selectedTrendsByTimeRange, setSelectedTrendsByTimeRange] = useState<any>([]);
-    const { setProductName, setCategoria, setFile } = useAppContext();
+    const { setProductName, setCategoria, setCategoriaName, setBase64image } = useAppContext();
     const navigate = useNavigate();
 
-    const handleClick = async (historyElement: HistoryElement) => {
+
+    const handleClick = async (historyElement: any) => {
         setProductName(historyElement.searchTerm);
-        setCategoria(categoriasInverso[historyElement.category]);
-        console.log("categorias inverso", categoriasInverso[historyElement.category]);
+        setCategoria(historyElement.category.split("|")[0]);
+        setCategoriaName(historyElement.category.split("|")[1]);
         try {
-            const response = await fetch(historyElement.imagePath);
-            const blob = await response.blob();
-            setFile(blob);
+
+            // Create blob from base64 string
+            setBase64image(historyElement.imagePath);
             navigate("/product");
         } catch (error) {
             console.error("Error fetching reviews:", error);
@@ -99,12 +100,7 @@ function TrendsView() {
                                 >
                                     {element.searchTerm}
                                 </h2>
-                                <p className="text-gray-600">{element.category}</p>
-                                <img
-                                    src={element.imagePath}
-                                    alt="Producto"
-                                    className="w-64 h-auto object-contain rounded-md"
-                                />
+                                <p className="text-gray-600">{element.category.split("|")[1]}</p>
                             </li>
                         ))}
                     </ul>
