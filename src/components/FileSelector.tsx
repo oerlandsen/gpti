@@ -8,7 +8,7 @@ function FileSelector() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [loadingSellers, setLoadingSellers] = useState(false);
   const navigate = useNavigate();
-  const { setCategoria, setProductName, setFile, setCategoriaName, user } = useAppContext();
+  const { setCategoria, setProductName, setFile, setCategoriaName, user, setBase64image } = useAppContext();
 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,6 +35,7 @@ function FileSelector() {
         // name = nameParser[name] || name;
         // setProductName(name);
         setFile(uploadedFile);
+        setBase64image("");
         setLoadingSellers(false);
         navigate("/product");
       } catch (error) {
