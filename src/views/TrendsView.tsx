@@ -8,6 +8,7 @@ interface HistoryElement {
     date: Date;
     imagePath: string;
     category: string;
+    count: number;
 }
 
 function TrendsView() {
@@ -90,19 +91,27 @@ function TrendsView() {
                 {loading ? (
                     <p className="text-center text-gray-600">Cargando...</p>
                 ) : (
-                    <ul className="flex flex-col list-none justify-center items-start px-4">
-                        {trends && selectedTrendsByTimeRange && selectedTrendsByTimeRange.map((element: HistoryElement, index: number) => (
-                            <li key={index} className="mb-2">
-                                <h2
-                                    className="text-gray-800 cursor-pointer"
-                                    onClick={() => handleClick(trends[index][0])}
-                                >
-                                    {element.searchTerm}
-                                </h2>
-                                <p className="text-gray-600">{element.category.split("|")[1]}</p>
-                            </li>
-                        ))}
-                    </ul>
+                    <table className="table-auto w-full text-left">
+                        <thead>
+                            <tr>
+                                <th className="px-4 py-2">Término de búsqueda</th>
+                                <th className="px-4 py-2">Número de búsquedas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {trends && selectedTrendsByTimeRange && selectedTrendsByTimeRange.map((element: HistoryElement, index: number) => (
+                                <tr key={index} className="border-t">
+                                    <td
+                                        className="px-4 py-2 text-gray-800 cursor-pointer"
+                                        onClick={() => handleClick(element)}
+                                    >
+                                        {element.searchTerm}
+                                    </td>
+                                    <td className="px-4 py-2">{element.count}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 )}
             </div>
 
