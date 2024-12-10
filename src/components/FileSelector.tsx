@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAppContext } from "../AppContext";
 import Spinner from "./Spinner";
+import { postImage } from "../api/mercadoLibre";
 
 const nameParser: { [key: string]: string } = {
   "amplificador": "Amplificador Guitarra",
@@ -18,7 +19,7 @@ function FileSelector() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [loadingSellers, setLoadingSellers] = useState(false);
   const navigate = useNavigate();
-  const { setCategoria, setProductName, setFile } = useAppContext();
+  const { setCategoria, setProductName, setFile, setCategoriaName, user } = useAppContext();
 
   const categoriaParser = (name: string) => {
     switch (name) {
@@ -64,11 +65,18 @@ function FileSelector() {
     if (uploadedFile) {
       try {
         setLoadingSellers(true);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        let name = uploadedFile.name.split(".")[0];
-        categoriaParser(name);
-        name = nameParser[name] || name;
-        setProductName(name);
+        // await new Promise((resolve) => setTimeout(resolve, 1000));
+
+        const data = await postImage(uploadedFile, user);
+        console.log("Data", data);
+        setProductName(data.product);
+        setCategoria(data.category);
+        setCategoriaName(data.categoryName);
+
+        // let name = uploadedFile.name.split(".")[0];
+        // categoriaParser(name);
+        // name = nameParser[name] || name;
+        // setProductName(name);
         setFile(uploadedFile);
         setLoadingSellers(false);
         navigate("/product");

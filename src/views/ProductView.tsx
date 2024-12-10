@@ -6,7 +6,7 @@ import Spinner from "../components/Spinner";
 import { categorias } from "../../public/categorias";
 
 function ProductView() {
-  const { productName, file, categoria, history, setHistory } = useAppContext();
+  const { productName, file, categoria, categoriaName, history, setHistory, base64image } = useAppContext();
 
   const [products, setProducts] = useState<any>([]);
   const [loading, setLoading] = useState(false);
@@ -58,10 +58,10 @@ function ProductView() {
               Producto: {productName === "WhatsApp Image 2024-11-22 at 13" ? "Iphone 13" : productName}
             </h1>
             <h1 className="text-2xl font-bold text-gray-800 mb-4">
-              Categoría: {categorias[categoria]}
+              Categoría: {categoriaName}
             </h1>
             <img
-              src={URL.createObjectURL(file!)}
+              src={base64image ? `data:image/jpeg;base64,${base64image}` : URL.createObjectURL(file!)}
               alt="Producto"
               className="w-full h-64 object-contain"
             />

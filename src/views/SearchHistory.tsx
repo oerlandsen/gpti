@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../AppContext";
-import { categoriasInverso } from "../../public/categorias";
+import { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { getHistory } from "../api/mercadoLibre";
 
 
 interface HistoryElement {
@@ -12,22 +14,50 @@ interface HistoryElement {
 
 function SearchHistory() {
 
-    const { history, setProductName, setCategoria, setFile } = useAppContext();
+    const { setProductName, setCategoria, setCategoriaName, setBase64image } = useAppContext();
     const navigate = useNavigate();
+    const { user } = useAuth0();
 
     const handleClick = async (historyElement: any) => {
+        console.log("History element on handleclick", historyElement);
         setProductName(historyElement.searchTerm);
-        setCategoria(categoriasInverso[historyElement.category]);
-        console.log("categorias inverso", categoriasInverso[historyElement.category]);
+        setCategoria(historyElement.category.split("|")[0]);
+        setCategoriaName(historyElement.category.split("|")[1]);
         try {
-            const response = await fetch(historyElement.imagePath);
-            const blob = await response.blob();
-            setFile(blob);
+
+            // Create blob from base64 string
+            setBase64image(historyElement.imagePath);
             navigate("/product");
         } catch (error) {
             console.error("Error fetching reviews:", error);
         }
     }
+
+    const [history, setHistory] = useState<HistoryElement[]>([]);
+
+    useEffect(() => {
+        if (!user) {
+            return;
+        }
+        const fetchHistory = async () => {
+            try {
+                const response = await getHistory(user.sub);
+                console.log("History", response);
+
+                // For each element in response, split the category and get the element at index 1
+                // response.forEach((element: any) => {
+                //     element.category = element.category.split("|")[1];
+                // });
+
+                setHistory(response);
+            } catch (error) {
+                console.error("Error fetching history:", error);
+            }
+        };
+        fetchHistory();
+    }
+        , [user]);
+
 
 
     return (
@@ -45,10 +75,10 @@ function SearchHistory() {
                                         Producto: {historyElement.searchTerm}
                                     </h2>
                                     <p className="text-gray-500 mb-2">
-                                        Categoría: {historyElement.category}
+                                        Categoría: {historyElement.category.split("|")[1]}
                                     </p>
                                     <img
-                                        src={historyElement.imagePath}
+                                        src={`data:image/jpeg;base64,${historyElement.imagePath}`}
                                         alt="Producto"
                                         className="w-full h-auto max-h-48 object-contain rounded-md"
                                     />

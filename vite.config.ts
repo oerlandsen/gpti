@@ -13,7 +13,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api-mercadolibre': {
-        target: 'https://api.mercadolibre.com',
+        // target: 'https://api.mercadolibre.com',
+        target: 'http://localhost:5000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-mercadolibre/, ''),
       },

@@ -21,6 +21,10 @@ interface AppContextProps {
   setUser: (user: any) => void;
   categoria: string;
   setCategoria: (categoria: string) => void;
+  categoriaName: string;
+  setCategoriaName: (categoriaName: string) => void;
+  base64image: string;
+  setBase64image: (base64image: string) => void;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -35,6 +39,8 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
   const [user, setUser] = useState<any>('auth0|6743ec8d0b7fa3b0dd19f5b0');
   const [history, setHistory] = useState<HistoryElement[]>([]);
   const [categoria, setCategoria] = useState("");
+  const [categoriaName, setCategoriaName] = useState("");
+  const [base64image, setBase64image] = useState("");
 
   useEffect(() => {
     async function setInitialHistory(user: any) {
@@ -71,7 +77,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({
         user,
         setUser,
         categoria,
-        setCategoria
+        setCategoria,
+        categoriaName,
+        setCategoriaName,
+        base64image,
+        setBase64image
       }}
     >
       {children}
