@@ -10,14 +10,4 @@ export default defineConfig({
     },
   },
   plugins: [react()],
-  server: {
-    proxy: {
-      '/api-mercadolibre': {
-        // target: 'https://api.mercadolibre.com',
-        target: 'https://mercadovision-api.onrender.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api-mercadolibre/, ''),
-      },
-    },
-  },
 })

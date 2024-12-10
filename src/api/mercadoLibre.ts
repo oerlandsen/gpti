@@ -19,11 +19,6 @@ export async function postImage(file: File, userId: string) {
 }
 
 export async function searchItems(query: string, category: string) {
-  // const response = await client.get(`/sites/MLC/search?q=${query}&category=${categoria}`);
-  // const response = await client.post(`/photo`,
-  //   {
-  //     "image": query
-  //   });
   const response = await client.get(`/search/${query}/${category}`);
   return response.data;
 }
