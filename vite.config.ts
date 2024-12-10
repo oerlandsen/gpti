@@ -14,7 +14,7 @@ export default defineConfig({
     proxy: {
       '/api-mercadolibre': {
         // target: 'https://api.mercadolibre.com',
-        target: 'http://localhost:5000',
+        target: 'https://mercadovision-api.onrender.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api-mercadolibre/, ''),
       },
