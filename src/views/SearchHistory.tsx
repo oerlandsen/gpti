@@ -41,15 +41,13 @@ function SearchHistory() {
         }
         const fetchHistory = async () => {
             try {
-                const response = await getHistory(user.sub);
-                console.log("History", response);
-
-                // For each element in response, split the category and get the element at index 1
-                // response.forEach((element: any) => {
-                //     element.category = element.category.split("|")[1];
-                // });
-
-                setHistory(response);
+                if (user.sub) {
+                    const response = await getHistory(user.sub);
+                    console.log("History", response);
+                    setHistory(response);
+                } else {
+                    console.error("User sub is undefined");
+                }
             } catch (error) {
                 console.error("Error fetching history:", error);
             }

@@ -11,60 +11,6 @@ interface HistoryElement {
     category: string;
 }
 
-function parseTrends(data: any) {
-    const trends: { [key: string]: HistoryElement[] } = {};
-    Object.keys(data).forEach((key: string) => {
-        data[key].forEach((element: HistoryElement) => {
-            if (!trends[element.searchTerm]) {
-                trends[element.searchTerm] = [element];
-            } else {
-                trends[element.searchTerm].push(element);
-            }
-        });
-    });
-    return trends;
-}
-
-// function getTrendsByTimeRange(trends: { [key: string]: HistoryElement[] }, timeRange: string) {
-//     const now = new Date();
-//     const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-//     const lastMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-
-//     let filteredTrends: { [key: string]: HistoryElement[] } = {};
-
-//     if (timeRange === "week") {
-//         filteredTrends = Object.keys(trends).reduce((acc, key) => {
-//             const filtered = trends[key].filter((element: HistoryElement) => {
-//                 return new Date(element.date) >= lastWeek;
-//             });
-//             if (filtered.length > 0) {
-//                 acc[key] = filtered;
-//             }
-//             return acc;
-//         }, {} as { [key: string]: HistoryElement[] });
-//     } else if (timeRange === "month") {
-//         filteredTrends = Object.keys(trends).reduce((acc, key) => {
-//             const filtered = trends[key].filter((element: HistoryElement) => {
-//                 return new Date(element.date) >= lastMonth;
-//             });
-//             if (filtered.length > 0) {
-//                 acc[key] = filtered;
-//             }
-//             return acc;
-//         }, {} as { [key: string]: HistoryElement[] });
-//     } else {
-//         filteredTrends = trends;
-//     }
-
-//     return Object.keys(filteredTrends)
-//         .sort((a, b) => filteredTrends[b].length - filteredTrends[a].length)
-//         .slice(0, 10)
-//         .reduce((acc, key) => {
-//             acc[key] = filteredTrends[key];
-//             return acc;
-//         }, {} as { [key: string]: HistoryElement[] });
-// }
-
 function TrendsView() {
     const [trends, setTrends] = useState<any>({} as { [key: string]: HistoryElement[] });
     const [loading, setLoading] = useState(false);
@@ -90,20 +36,7 @@ function TrendsView() {
     useEffect(() => {
         const fetchTrends = async () => {
             setLoading(true);
-            //     fetch(`./searchHistory.json`, {
-            //         headers: {
-            //             'Content-Type': 'application/json',
-            //             'Accept': 'application/json'
-            //         }
-            //     })
-            //         .then(response => response.json())
-            //         .then(data => {
-            //             setTrends(parseTrends(data));
-            //             console.log("Trends data", trends);
-            //             console.log("Trends by time range", getTrendsByTimeRange(trends, timeRange));
-            //             setLoading(false);
-            //         });
-            // }
+
             try {
                 const response = await getTrends();
                 setTrends(response["trends"]);
@@ -162,7 +95,7 @@ function TrendsView() {
                             <li key={index} className="mb-2">
                                 <h2
                                     className="text-gray-800 cursor-pointer"
-                                    onClick={() => handleClick(trends[key][0])}
+                                    onClick={() => handleClick(trends[index][0])}
                                 >
                                     {element.searchTerm}
                                 </h2>
